@@ -26,7 +26,8 @@
         margin-top: 2rem;
     }
 
-    .pagination input,.pagination a {
+    .pagination input,
+    .pagination a {
         color: #007BFF;
         padding: 8px 16px;
         text-decoration: none;
@@ -648,7 +649,7 @@
         prevButton.addEventListener('click', () => {
             if (currentPage > 1) {
                 currentPage--;
-                displayPage(currentPage);   
+                displayPage(currentPage);
                 updatePagination();
             }
         });
