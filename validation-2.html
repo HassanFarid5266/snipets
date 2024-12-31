@@ -142,10 +142,9 @@
             alert.innerHTML = message;
             alert.className = `alert ${type} visible`;
 
-            // Hide the alert after 2 seconds
             setTimeout(() => {
                 alert.className = `alert ${type}`;
-                setTimeout(() => { alert.style.display = 'none'; }, 500); // Wait for fade-out before hiding
+                setTimeout(() => { alert.style.display = 'none'; }, 500);
             }, 2000);
         }
 
@@ -197,7 +196,7 @@
                 showAlert('Please correct the errors in the form.', 'error');
             }
 
-            return false; // Prevent form submission
+            return false;
         }
     </script>
 </body>

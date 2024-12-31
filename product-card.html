@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Coding by CodingNepal | www.codingnepalweb.com -->
 <html lang="en" dir="ltr">
 
 <head>
@@ -447,25 +446,19 @@
 
 
     <script>
-        // Select all product cards
         document.querySelectorAll(".product-card").forEach((card) => {
-            // Get the color option and main images within the card
             const colorOptions = card.querySelector(".color-option .circles");
             const mainImages = card.querySelector(".main-images");
 
-            // Add event listener to color options
             colorOptions.addEventListener("click", (e) => {
                 const target = e.target;
 
-                // Check if the clicked element is a color circle
                 if (target.classList.contains("circle")) {
-                    // Remove active class from currently active color and image
                     colorOptions.querySelector(".active").classList.remove("active");
                     mainImages.querySelector(".active").classList.remove("active");
 
-                    // Add active class to the clicked color and corresponding image
                     target.classList.add("active");
-                    const selectedColor = target.id; // Get the color ID
+                    const selectedColor = target.id;
                     mainImages.querySelector(`.${selectedColor}`).classList.add("active");
                 }
             });

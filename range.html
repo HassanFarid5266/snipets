@@ -144,10 +144,8 @@
     <script>
         var filterableElements = document.querySelector(".js-filterable");
 
-        /// Select all filterable elements
         var filterableElements = document.querySelectorAll('.js-filterable');
 
-        // Find the minimum and maximum data-price values
         var minPrice = Number.MAX_VALUE;
         var maxPrice = Number.MIN_VALUE;
 
@@ -157,7 +155,6 @@
             maxPrice = Math.max(maxPrice, price);
         });
 
-        // Set the min, max, and value attributes of the price range inputs
         var minPriceInput = document.getElementById('minPrice');
         var maxPriceInput = document.getElementById('maxPrice');
 
@@ -169,22 +166,18 @@
         maxPriceInput.max = maxPrice;
         maxPriceInput.value = maxPrice;
 
-        // Update the selected price values on input change
         minPriceInput.addEventListener('input', updatePriceValues);
         maxPriceInput.addEventListener('input', updatePriceValues);
 
-        // Helper function to update the displayed price values
         function updatePriceValues() {
             var minSelectedPrice = parseInt(minPriceInput.value);
             var maxSelectedPrice = parseInt(maxPriceInput.value);
 
-            // Ensure the minimum price is not greater than the maximum price
             if (minSelectedPrice > maxSelectedPrice) {
                 minPriceInput.value = maxSelectedPrice;
                 minSelectedPrice = maxSelectedPrice;
             }
 
-            // Ensure the maximum price is not less than the minimum price
             if (maxSelectedPrice < minSelectedPrice) {
                 maxPriceInput.value = minSelectedPrice;
                 maxSelectedPrice = minSelectedPrice;
@@ -196,14 +189,12 @@
             var rangeLeftPercentage = ((minSelectedPrice - minPrice) / (maxPrice - minPrice)) * 100;
             var rangeRightPercentage = 100 - ((maxSelectedPrice - minPrice) / (maxPrice - minPrice)) * 100;
 
-            // Set the width of the range-selected element as a percentage
             var rangeSelected = document.querySelector('.range-selected');
             if (rangeSelected) {
                 rangeSelected.style.left = rangeLeftPercentage + '%';
                 rangeSelected.style.right = rangeRightPercentage + '%';
             }
 
-            // Filter the .js-filterable elements
             filterableElements.forEach(function (element) {
                 var price = parseInt(element.getAttribute('data-price'));
                 if (price >= minSelectedPrice && price <= maxSelectedPrice) {
@@ -216,7 +207,6 @@
             });
         }
 
-        // Initialize the filtering based on the initial values of the price range inputs
         updatePriceValues();
 
 
