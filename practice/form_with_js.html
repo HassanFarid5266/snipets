@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>form with js only practice</title>
+  </head>
+  <body>
+    <div id="form-container"></div>
+
+    <script>
+      const formContainer = document.getElementById("form-container");
+
+      const form = document.createElement("form");
+      console.log(form);
+
+      const textLabel = document.createElement("label");
+      textLabel.textContent = "Name";
+      const nameinput = document.createElement("input");
+      nameinput.type = "text";
+      nameinput.placeholder = "Enter Your name";
+      nameinput.required = true;
+      console.log(textLabel);
+      console.log(nameinput);
+
+      const emailLabel = document.createElement("label");
+      emailLabel.textContent = "Email";
+      const emailinput = document.createElement("input");
+      emailinput.type = "email";
+      emailinput.placeholder = "Enter Your email";
+      emailinput.required = true;
+      console.log(emailLabel);
+      console.log(emailinput);
+
+      const submitButton = document.createElement("button");
+      submitButton.textContent = "Submit";
+      console.log(submitButton);
+
+      form.appendChild(textLabel);
+      form.appendChild(document.createElement("br"));
+      form.appendChild(nameinput);
+      form.appendChild(document.createElement("br"));
+      form.appendChild(document.createElement("br"));
+      form.appendChild(emailLabel);
+      form.appendChild(document.createElement("br"));
+      form.appendChild(emailinput);
+      form.appendChild(document.createElement("br"));
+      form.appendChild(document.createElement("br"));
+      form.appendChild(submitButton);
+
+      formContainer.appendChild(form);
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const name = nameinput.value;
+        const email = emailinput.value;
+
+        alert(`Submitted!\nName: ${name}\nEmail: ${email}`);
+        document.write(`Submitted!<br>Name: ${name}<br>Email: ${email}`);
+      });
+    </script>
+  </body>
+</html>
