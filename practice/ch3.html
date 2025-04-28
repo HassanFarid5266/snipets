@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter 3</title>
+  </head>
+  <style>
+    .collapsible .collapse-item {
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .collapsible .collapse-item .collapse-head {
+      display: block;
+      width: 100%;
+      text-decoration: none;
+      background-color: transparent;
+      font-size: 14px;
+      padding: 10px 15px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      position: relative;
+      text-align: left;
+    }
+
+    .collapsible .collapse-item .collapse-body {
+      height: 0px;
+      visibility: hidden;
+      opacity: 0;
+      padding: 0px;
+      transition: all 0.5s ease-in-out;
+    }
+    .collapsible .collapse-item.active .collapse-head {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .collapsible .collapse-item.active .collapse-body {
+      height: 100%;
+      visibility: visible;
+      opacity: 1;
+      padding: 20px;
+    }
+  </style>
+  <body>
+    <div class="collapsible">
+      <div class="collapse-item">
+        <button
+          class="collapse-head"
+          data-nxt-target="#demo3"
+          data-nxt-toggle="collapse"
+        >
+          Item 3
+        </button>
+        <div id="demo3" class="collapse-body">content</div>
+      </div>
+
+      <div class="collapse-item">
+        <button
+          class="collapse-head"
+          data-nxt-target="#demo4"
+          data-nxt-toggle="collapse"
+        >
+          Item 4
+        </button>
+        <div id="demo4" class="collapse-body">content</div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("click", function (e) {
+        const target = e.target;
+        if (target.matches('[data-nxt-toggle="collapse"]')) {
+          let collapseItem = target.parentElement;
+          let collapsible = collapseItem.parentElement;
+          let item = collapsible.querySelectorAll(".collapse-item");
+
+          item.forEach((el) => {
+            el.classList.remove("active");
+          });
+          collapseItem.classList.toggle("active");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapter 2</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 100%;
+      overflow: hidden;
+      padding: 100px 20px;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .card {
+      width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 10px;
+    }
+  </style>
+  <body>
+    <div class="container"></div>
+
+    <script>
+      const arr = [
+        {
+          cardImage: "1",
+          heading: "Agile Methodology",
+          desc: "In today's fast-paced and ever-evolving digital landscape, the traditional waterfall approach to software development is no longer sufficient to meet the demands of modern businesses. Enter Agile methodology – a dynamic and iterative approach that has revolutionized the way software is developed, enabling organizations to drive efficiency, foster innovation, and deliver value to customers more effectively than ever before.",
+        },
+        {
+          cardImage: "2",
+          heading: "Agile Methodology",
+          desc: "In today's fast-paced and ever-evolving digital landscape, the traditional waterfall approach to software development is no longer sufficient to meet the demands of modern businesses. Enter Agile methodology – a dynamic and iterative approach that has revolutionized the way software is developed, enabling organizations to drive efficiency, foster innovation, and deliver value to customers more effectively than ever before.",
+        },
+        {
+          cardImage: "3",
+          heading: "Agile Methodology",
+          desc: "In today's fast-paced and ever-evolving digital landscape, the traditional waterfall approach to software development is no longer sufficient to meet the demands of modern businesses. Enter Agile methodology – a dynamic and iterative approach that has revolutionized the way software is developed, enabling organizations to drive efficiency, foster innovation, and deliver value to customers more effectively than ever before.",
+        },
+        {
+          cardImage: "4",
+          heading: "Agile Methodology",
+          desc: "In today's fast-paced and ever-evolving digital landscape, the traditional waterfall approach to software development is no longer sufficient to meet the demands of modern businesses. Enter Agile methodology – a dynamic and iterative approach that has revolutionized the way software is developed, enabling organizations to drive efficiency, foster innovation, and deliver value to customers more effectively than ever before.",
+        },
+        {
+          cardImage: "1",
+          heading: "Agile Methodology",
+          desc: "In today's fast-paced and ever-evolving digital landscape, the traditional waterfall approach to software development is no longer sufficient to meet the demands of modern businesses. Enter Agile methodology – a dynamic and iterative approach that has revolutionized the way software is developed, enabling organizations to drive efficiency, foster innovation, and deliver value to customers more effectively than ever before.",
+        },
+        {
+          cardImage: "2",
+          heading: "Agile Methodology",
+          desc: "In today's fast-paced and ever-evolving digital landscape, the traditional waterfall approach to software development is no longer sufficient to meet the demands of modern businesses. Enter Agile methodology – a dynamic and iterative approach that has revolutionized the way software is developed, enabling organizations to drive efficiency, foster innovation, and deliver value to customers more effectively than ever before.",
+        },
+        {
+          cardImage: "3",
+          heading: "Agile Methodology",
+          desc: "In today's fast-paced and ever-evolving digital landscape, the traditional waterfall approach to software development is no longer sufficient to meet the demands of modern businesses. Enter Agile methodology – a dynamic and iterative approach that has revolutionized the way software is developed, enabling organizations to drive efficiency, foster innovation, and deliver value to customers more effectively than ever before.",
+        },
+        {
+          cardImage: "4",
+          heading: "Agile Methodology",
+          desc: "In today's fast-paced and ever-evolving digital landscape, the traditional waterfall approach to software development is no longer sufficient to meet the demands of modern businesses. Enter Agile methodology – a dynamic and iterative approach that has revolutionized the way software is developed, enabling organizations to drive efficiency, foster innovation, and deliver value to customers more effectively than ever before.",
+        },
+      ];
+
+      const container = document.querySelector(".container");
+      console.log(container);
+
+      arr.forEach(function (item) {
+        const card = document.createElement("article");
+        card.classList.add("card");
+
+        const card_head = document.createElement("div");
+        card_head.classList.add("card-head");
+
+        const card_body = document.createElement("div");
+        card_body.classList.add("card-body");
+
+        const card_foot = document.createElement("div");
+        card_foot.classList.add("card-foot");
+
+        const image = document.createElement("img");
+        image.src = item.cardImage;
+        image.classList.add("card-image");
+        image.alt = "Card Image";
+
+        const cardHeading = document.createElement("h1");
+        cardHeading.classList.add("card-heading");
+        cardHeading.textContent = item.heading;
+
+        const cardDesc = document.createElement("p");
+        cardDesc.classList.add("card-desc");
+        cardDesc.textContent = item.desc;
+
+        const button = document.createElement("button");
+        button.classList.add("btn");
+        button.textContent = "Lets Grow";
+
+        // here link to parents
+        // append child
+        container.appendChild(card);
+        card.appendChild(card_head);
+        card.appendChild(card_body);
+        card.appendChild(card_foot);
+        card_head.appendChild(image);
+        card_body.appendChild(cardHeading);
+        card_body.appendChild(cardDesc);
+        card_foot.appendChild(button);
+      });
+    </script>
+  </body>
+</html>
