@@ -3,94 +3,92 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To-Do App</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-      h1 {
-        text-align: center;
-        color: #333;
-      }
-      #task-form {
-        display: flex;
-        margin-bottom: 20px;
-      }
-      #task-input {
-        flex-grow: 1;
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ddd;
-        border-radius: 4px 0 0 4px;
-      }
-      #task-form button {
-        padding: 10px 15px;
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        border-radius: 0 4px 4px 0;
-        cursor: pointer;
-      }
-      #task-list {
-        list-style-type: none;
-        padding: 0;
-      }
-      .task-item {
-        display: flex;
-        align-items: center;
-        padding: 10px;
-        border-bottom: 1px solid #eee;
-      }
-      .task-item.completed {
-        text-decoration: line-through;
-        color: #888;
-      }
-      .task-text {
-        flex-grow: 1;
-        margin-left: 10px;
-      }
-      .delete-btn {
-        background-color: #f44336;
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-    </style>
+    <title>Document</title>
   </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    #task-form {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    #task-input {
+      flex-grow: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px 0 0 4px;
+    }
+    #task-form button {
+      padding: 10px 15px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+    #todo-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    .task-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    .task-item.completed {
+      text-decoration: line-through;
+      color: #888;
+    }
+    .task-text {
+      flex-grow: 1;
+      margin-left: 10px;
+    }
+    .delete-btn {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
   <body>
-    <h1>My To-Do List</h1>
+    <h1>My to do list</h1>
     <form id="task-form">
-      <input type="text" id="task-input" placeholder="Add a new task..." required />
-      <button type="submit">Add</button>
+      <input type="text" id="task-input" placeholder="Add a new task..." />
+      <button type="submit" class="task-btn">Add</button>
     </form>
-    <ul id="task-list"></ul>
+    <ul id="todo-list"></ul>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const taskForm = document.getElementById("task-form");
         const taskInput = document.getElementById("task-input");
-        const taskList = document.getElementById("task-list");
+        const taskList = document.getElementById("todo-list");
 
-        // Load tasks from localStorage
         loadTasks();
 
-        // Add new task
         taskForm.addEventListener("submit", function (e) {
           e.preventDefault();
           const taskText = taskInput.value.trim();
           if (taskText) {
+            console.log(taskText);
             addTask(taskText);
             taskInput.value = "";
-            saveTasks();
+            saveTask();
           }
         });
 
-        // Add task to the list
         function addTask(text, isCompleted = false) {
           const li = document.createElement("li");
           li.className = "task-item";
@@ -118,22 +116,19 @@
           taskList.appendChild(li);
         }
 
-        // Toggle task completion
         function toggleTask(e) {
           const li = e.target.parentElement;
           li.classList.toggle("completed");
-          saveTasks();
+          saveTask();
         }
 
-        // Delete task
         function deleteTask(e) {
           const li = e.target.parentElement;
           taskList.removeChild(li);
-          saveTasks();
+          saveTask();
         }
 
-        // Save tasks to localStorage
-        function saveTasks() {
+        function saveTask() {
           const tasks = [];
           document.querySelectorAll(".task-item").forEach((task) => {
             tasks.push({
@@ -143,14 +138,15 @@
           });
           localStorage.setItem("tasks", JSON.stringify(tasks));
         }
+        console.log(saveTask());
 
-        // Load tasks from localStorage
         function loadTasks() {
           const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
           tasks.forEach((task) => {
             addTask(task.text, task.completed);
           });
         }
+        console.log(loadTasks);
       });
     </script>
   </body>
