@@ -1,8 +1,13 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import TheWelcome from './components/TheWelcome.vue'
+import formValidation from './components/formValidation.vue'
 </script>
 
 <template>
-  <TheWelcome />
+  <div>
+    <!-- <TheWelcome /> -->
+    <formValidation />
+  </div>
+  
 </template>
